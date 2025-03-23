@@ -1,4 +1,5 @@
 import smtplib
+from email.message import EmailMessage
 from flask import jsonify, abort
 
 from src.util.constants import *
@@ -6,16 +7,25 @@ from src.util.constants import *
 
 def email_processor(data):
     try:
-        email = data.get(EMAIL)
+        # Create email
+        msg = EmailMessage()
+        msg["Subject"] = data.get(SUBJECT)
+        msg["From"] = SENDER_EMAIL
+        msg["To"] = MY_EMAIL
+        msg["Reply-To"] = data.get(EMAIL)
+
+        # Email body
         with open("letter_template.txt") as letter_file:
             template = letter_file.read()
 
         formatted_content = template.format(**data)
+        msg.set_content(formatted_content)
 
         with smtplib.SMTP("smtp.gmail.com", 587) as connection:
             connection.starttls()
             connection.login(SENDER_EMAIL, SENDER_PASSWORD)
-            connection.sendmail(from_addr=email, to_addrs=MY_EMAIL, msg=formatted_content)
+            connection.send_message(msg)
+            connection.quit()
 
         return jsonify({"message": "Email sent successfully!"}), 200
 

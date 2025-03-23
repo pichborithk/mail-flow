@@ -1,9 +1,14 @@
 services:
   api:
     container_name: rest_api
-    build: .
+    build:
+      context: .
+      args:
+        - PORT=${PORT}  # Pass the environment variable as build argument
     ports:
-      - "8080:8080"   # Map container port 8080 to host port 8080
+       - "${PORT}:${PORT}"  # Bind the environment variable to por
+    environment:
+      - PORT=${PORT}
     volumes:
       - .:/app         # Sync local code with container (for development)
     restart: always    # Automatically restart the container if it crashes

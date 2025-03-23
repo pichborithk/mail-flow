@@ -1,6 +1,4 @@
-Subject: {subject}
-
-FROM {email}:
+FROM {email}
 
 {content}
 

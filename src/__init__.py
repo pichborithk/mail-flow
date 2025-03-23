@@ -4,7 +4,7 @@ from flask_cors import CORS
 from src.util.constants import *
 
 app = Flask(__name__)
-CORS(app, resources={r"/*": {"origins": [PERSONAL_SITE_URL]}})
+CORS(app, resources={r"/*": {"origins": [PERSONAL_SITE_URL, "*"]}})
 
 
 @app.get("/ping")

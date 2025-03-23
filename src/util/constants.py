@@ -15,6 +15,7 @@ class Constants:
     SENDER_PASSWORD = os.getenv("SENDER_PASSWORD")
     MY_EMAIL = os.getenv("MY_EMAIL")
     PERSONAL_SITE_URL = os.getenv("PERSONAL_SITE_URL")
+    PORT = os.getenv("PORT")
 
 
 NAME = Constants.NAME
@@ -25,3 +26,4 @@ SENDER_EMAIL = Constants.SENDER_EMAIL
 SENDER_PASSWORD = Constants.SENDER_PASSWORD
 MY_EMAIL = Constants.MY_EMAIL
 PERSONAL_SITE_URL = Constants.PERSONAL_SITE_URL
+PORT = Constants.PORT
