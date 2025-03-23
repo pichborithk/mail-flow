@@ -1,0 +1,7 @@
+Subject: {subject}
+
+FROM {email}:
+
+{content}
+
+{name}

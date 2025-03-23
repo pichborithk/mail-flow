@@ -1,0 +1,9 @@
+services:
+  api:
+    container_name: rest_api
+    build: .
+    ports:
+      - "8080:8080"   # Map container port 8080 to host port 8080
+    volumes:
+      - .:/app         # Sync local code with container (for development)
+    restart: always    # Automatically restart the container if it crashes
